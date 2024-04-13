@@ -29,20 +29,16 @@ def main():
     tiempo_para_dormir = int(input("Ingrese el tiempo para dormir (en milisegundos): "))
     argumentos = [str(numero_filosofos), str(tiempo_para_morir), str(tiempo_para_comer), str(tiempo_para_dormir)]
 
-    # Agregar el número opcional de veces que cada filósofo debe comer
     veces_comer = input("Ingrese el número de veces que cada filósofo debe comer (opcional): ")
     if veces_comer:
         argumentos.append(veces_comer)
 
-    # Ejecutar el proceso y capturar la salida
     salida_ejecutable = ejecutar_philo(argumentos)
 
-    # Crear una tabla para almacenar las acciones de todos los filósofos
     tabla = {"Timestamp": []}
     for i in range(1, numero_filosofos + 1):
         tabla[f"Filósofo {i}"] = []
 
-    # Procesar la salida para llenar la tabla
     for linea in salida_ejecutable:
         partes = linea.split()
         if len(partes) < 3:
@@ -62,7 +58,6 @@ def main():
                     break
             tabla[f"Filósofo {i}"].append(colorear_accion(accion_filosofo))
 
-    # Imprimir la tabla
     print(tabulate(tabla, headers="keys", tablefmt="grid"))
 
 if __name__ == "__main__":
